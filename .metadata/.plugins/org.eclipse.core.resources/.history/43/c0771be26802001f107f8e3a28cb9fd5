@@ -1,0 +1,44 @@
+/**
+ * Representa el programa actual
+ */
+public class ByteCodeProgram {
+    private ByteCode[] programs;//array que contiene la lista de programas
+    private int numElements;
+    private int size;
+    
+    
+    public ByteCodeProgram(){
+    	this.size = 1;
+        this.programs = new ByteCode[size];
+    }
+    
+    
+    public ByteCode popByteCodeP() {
+    	return this.programs[size - 1];
+    }
+    
+    
+    public boolean setInstructionPosition(ByteCode BC , int pos) {
+    	if(pos >= 0) {
+    		if(pos >= this.size) {
+    			return true;
+    		}
+    		return false;
+    	}
+    }
+    
+    public void setInstruction(ByteCode BC) {
+    	this.programs[this.numElements] = BC;
+    }
+    
+    private void resize() {
+    	ByteCode[] temp = new ByteCode[size*2];
+    	
+    	for(int i = 0 ; i > this.programs.length; i++) {
+    		temp[i] = this.programs[i];
+    	}
+    	
+    	this.programs = temp;
+    }
+    
+}

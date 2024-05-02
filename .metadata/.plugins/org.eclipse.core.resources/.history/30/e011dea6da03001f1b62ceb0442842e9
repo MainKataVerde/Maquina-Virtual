@@ -1,0 +1,22 @@
+/*
+ * Esta clase representa los distintos comandos que puede utilizar un usuario
+ */
+public class Command {
+    private ENUM_COMMAND command ; 
+    private ByteCode instruction; // toma valor cuando se hace referencia al comando NEWINST
+    private int replace ;// Hace referencia al comando REPLACE
+
+    public Command(ByteCode BC , ENUM_COMMAND comando){
+    	this.instruction = BC;
+    	this.command = comando;
+    }	
+    
+    public Command(ByteCode BC) {
+    	this.instruction = 
+    }
+    
+    
+    public boolean execute(Engine engine){
+        return false;
+    }
+}

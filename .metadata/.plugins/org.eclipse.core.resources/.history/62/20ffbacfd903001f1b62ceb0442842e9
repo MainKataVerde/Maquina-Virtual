@@ -1,0 +1,19 @@
+/*
+ * Identificar que esta poniendo el ususario por consola
+ */
+public class ByteCodeParsear {
+    /*
+     * Devuelve un bytecode 
+     */
+    public static ByteCode parser(String cadenaUsuario){
+        /*
+         * Paricionar el streang q no llega por consolar 
+         * si el tamaño es 0 se devuelve null es q no ha puesto nada basicamente 
+         * si tiene tamaño 1 tenemos que comprobar que palabra es y si coincide con una bytecode si no coincide con nada devuelve null
+         * si coincide pues creamos un objeto tipo bite code de tipo add
+         * si el tamaño es 2 es igual q el uno 
+         * si no es nada es null 
+         * si es mayor que todo esto es null
+         */
+    }
+}

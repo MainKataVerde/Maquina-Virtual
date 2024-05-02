@@ -1,0 +1,20 @@
+public class CommandParsear {
+    /*
+     * Coge un strean lo particiona y lo analiza viendo cada parte del String 
+     * Si esta mal o no correspongo con nungun comando se devuelve null
+     */
+    public static Command CommandParse(String line){
+            String[] comando = line.toLowerCase().split(" ");
+            
+            Command resultado ;
+            
+            switch (comando[0]) {
+			case "help":
+					return new Command(ENUM_COMMAND.HELP , new ByteCode(comando[1]).parser());
+				break;
+
+			default:
+				break;
+			}
+    }
+}

@@ -1,0 +1,9 @@
+public class CommandParsear {
+    /*
+     * Coge un strean lo particiona y lo analiza viendo cada parte del String 
+     * Si esta mal o no correspongo con nungun comando se devuelve null
+     */
+    public static void CommandParse(String line){
+            //la idea es ifual que en bytecodeparsear
+    }
+}
