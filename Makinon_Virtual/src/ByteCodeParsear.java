@@ -9,14 +9,18 @@ public class ByteCodeParsear {
 		String[] cadema = cadenaUsuario.split(" ");
 		// si la segunda cadena esta vacia eso quire decir que es de 1 solo
 		if (cadema.length == 2) {
-			switch (cadema[0]) {
-			case "push":
-				return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(cadema[1]));
-			case "load":
-				return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(cadema[1]));
-			case "store":
-				return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(cadema[1]));
-			default:
+			if (cadema[1] != null) {
+				switch (cadema[0]) {
+				case "push":
+					return new ByteCode(ENUM_BYTECODE.PUSH, Integer.parseInt(cadema[1]));
+				case "load":
+					return new ByteCode(ENUM_BYTECODE.LOAD, Integer.parseInt(cadema[1]));
+				case "store":
+					return new ByteCode(ENUM_BYTECODE.STORE, Integer.parseInt(cadema[1]));
+				default:
+					return null;
+				}
+			}else{
 				return null;
 			}
 		} else if (cadema.length == 1) {
@@ -36,7 +40,7 @@ public class ByteCodeParsear {
 			default:
 				return null;
 			}
-		}else {
+		} else {
 			return null;
 		}
 

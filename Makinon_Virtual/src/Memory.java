@@ -2,16 +2,14 @@
  * Representa la memoria de la maquina
  */
 public class Memory {
-    private final int MAX_MEMORY;
     private Integer[] memory;
     private int size;
     private boolean empty;
     private int numElements;
 
     public Memory() {
-        this.MAX_MEMORY = 10;
-        this.memory = new Integer[MAX_MEMORY];
-        this.size = 0;
+        this.size = 1;
+        this.memory = new Integer[this.size];
     }
 
     /*
@@ -21,8 +19,9 @@ public class Memory {
      * si se puede escribir tru si no da false
      */
     public boolean write(int pos, int value) {
-        if (pos >= this.MAX_MEMORY) {
+        if (pos >= this.size) {
             resize(pos);
+            this.memory[pos] = value;
             this.numElements++;
             return true;
         } else {
@@ -53,12 +52,8 @@ public class Memory {
     private void resize(int pos) {
         Integer[] temp = new Integer[pos * 2];
 
-        for (int i = 0; i < temp.length; i++) {
-            if (i < this.memory.length) {
+        for (int i = 0; i < this.memory.length; i++) {
                 temp[i] = this.memory[i];
-            } else {
-                temp[i] = null;
-            }
         }
 
         this.memory = temp;
@@ -66,12 +61,14 @@ public class Memory {
 
     public String toString(){
         String cadena = "";
-        if (this.size > 0) {
+        if (this.numElements > 0) {
             for (int i = 0; i < this.memory.length; i++) {
-                cadena += "[" + i + "]" + ":"+ this.memory[i] + " ";
+            	if(this.memory[i] != null) {
+            		cadena += "[" + i + "]" + ":"+ this.memory[i] + " ";
+            	}
             }
         }else{
-            System.out.println("<vacia>");
+        	cadena = "<vacio>";
         }
         return cadena;
     }

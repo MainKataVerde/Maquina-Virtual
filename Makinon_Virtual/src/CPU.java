@@ -7,36 +7,33 @@
 public class CPU {
 	private OperandStack pila;
 	private Memory memory;
-	private boolean halt ;
-		
-	//tengo q hacer un get.enumin si no no funcionan (todo esto dentro de bc)
+	private boolean halt;
+
+	public CPU() {
+		this.pila = new OperandStack();
+		this.memory = new Memory();
+	}
+
+	// tengo q hacer un get.enumin si no no funcionan (todo esto dentro de bc)
 	public boolean execute(ByteCode BC) {
 		switch (BC.getName()) {
 		case ADD:
-
-			break;
+			return this.sumaPila();
 		case SUB:
-
-			break;
+			return this.restaPila();
 		case MUL:
-
-			break;
+			return this.multPila();
 		case DIV:
-
-			break;
+			return this.divPila();
 		case STORE:
-
-			break;
+			return this.store(BC);
 		case PUSH:
-
-			break;
+			return pila.push(BC.getParam2());
 		case HALT:
-
-			break;
+			this.halt = true;
+			return true;
 		case LOAD:
-
-			break;
-
+			return this.pila.push(this.memory.read(BC.getParam2()));
 		default:
 			break;
 		}
@@ -48,20 +45,23 @@ public class CPU {
 	 * tiene un metodo to string llama al metodo tostring de operanstuck y al de
 	 * memory
 	 */
-	
+
 	public String toString() {
-		return "Estado de la CPU:\n" + "Memoria : " +memory.toString() + "\n"+ "Pila :" + pila.toString();
+		return "\n\nEstado de la CPU:\n" + "  Memoria : " + memory.toString() + "\n" + "  Pila :" + pila.toString();
 	}
 
 	/*
 	 * metodo erase borra la pila y la memoria
 	 */
-
+	public void erase() {
+		this.pila = new OperandStack();
+		this.memory = new Memory();
+	}
 	/*
 	 * tiene otro metodo isHalt dice si la maquina esta parada o no la maquina
 	 * virtual
 	 */
-	
+
 	public boolean isHalt() {
 		return this.halt;
 	}
@@ -69,8 +69,80 @@ public class CPU {
 	/*
 	 * metodos : Suma pila , resta pila , multiplica pila , divide pila se tiene que
 	 * sacar el elemento hacer la operacion y solo meter el resultado se tienen que
-	 * usar los metodos de pop y push
-	 * todos estos metodos son booleanos
+	 * usar los metodos de pop y push todos estos metodos son booleanos
 	 */
+
+	public boolean sumaPila() {
+
+		int num1 = this.pila.pop();
+		int num2 = this.pila.pop();
+
+		if (num1 == -1) {
+			return false;
+		} else if (num2 == -1) {
+			this.pila.push(num1);
+			return true;
+		} else {
+			this.pila.push(num1 + num2);
+			return true;
+		}
+	}
+	
+	public boolean restaPila() {
+
+		int num1 = this.pila.pop();
+		int num2 = this.pila.pop();
+
+		if (num1 == -1) {
+			return false;
+		} else if (num2 == -1) {
+			this.pila.push(num1);
+			return true;
+		} else {
+			this.pila.push(num1 - num2);
+			return true;
+		}
+	}
+
+	public boolean multPila() {
+		int num1 = this.pila.pop();
+		int num2 = this.pila.pop();
+
+		if (num1 == -1) {
+			return false;
+		} else if (num2 == -1) {
+			this.pila.push(num1);
+			return true;
+		} else {
+			this.pila.push(num1 * num2);
+			return true;
+		}
+	}
+
+	public boolean divPila() {
+		int num1 = this.pila.pop();
+		int num2 = this.pila.pop();
+
+		if (num1 == -1) {
+			return false;
+		} else if (num2 == -1) {
+			this.pila.push(num1);
+			return true;
+		} else if (num2 == 0) {
+			this.pila.push(num1);
+			return true;
+		} else {
+			this.pila.push(num1 / num2);
+			return true;
+		}
+
+	}
+
+	public boolean store(ByteCode bc) {
+		this.memory.write(bc.getParam2(), this.pila.pop());
+		return true;
+	}
+
+	
 
 }

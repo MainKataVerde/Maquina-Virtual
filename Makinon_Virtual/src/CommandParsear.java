@@ -26,22 +26,24 @@ public class CommandParsear {
 				return null;
 			}
 		case 2:
-			switch (comando[0]) {
-			case "replace":
-				if (comando[1] != null) {
-					return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(comando[1]));
-				} else {
+			if(comando[1] != null) {
+				switch (comando[0]) {
+				case "replace":
+						return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(comando[1]));
+				case "newinst" :
+						Command cmd = new Command(ENUM_COMMAND.NEWINST, ByteCodeParsear.parser(comando[1]));
+						if(cmd.getInstruction() == null) {
+							return null;
+						}else {
+							return cmd;
+						}
+				default:
 					return null;
 				}
-			case "newinst" :
-				if(comando[1] != null) {
-					return new Command(ENUM_COMMAND.NEWINST, ByteCodeParsear.parser(comando[1]));
-				}else {
-					return null;
-				}
-			default:
+			}else {
 				return null;
 			}
+			
 		case 3:
 			switch (comando[0]) {
 			case "newinst":

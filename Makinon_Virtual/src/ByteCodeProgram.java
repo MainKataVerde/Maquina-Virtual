@@ -56,7 +56,7 @@ public class ByteCodeProgram {
 	private void resize() {
 		ByteCode[] temp = new ByteCode[this.programs.length*2];
 
-		for (int i = 0; i <= this.numElements - 1 ; i++) {
+		for (int i = 0; i < this.programs.length ; i++) {
 			temp[i] = this.programs[i];
 		}
 
@@ -65,15 +65,17 @@ public class ByteCodeProgram {
 	
 	public void reset() {
 		this.programs = new ByteCode[this.size];
+		this.numElements = 0;
 	}
 	
 	
 	public String runProgram(CPU cpu) {
-    	String mensaje = "El estado de la maquina tras la ejecucion de : \n"+this.programs[this.numElements];
     	
+		String mensaje = "";
+		
     	for (int i = 0; i < this.numElements; i++) {
 			if(!cpu.isHalt() && cpu.execute(this.programs[i])) {
-				mensaje += cpu.toString();
+				mensaje += "\n\nEl estado de la maquina tras la ejecucion de : "+this.programs[i].getName()+ " " + this.programs[i].getParam() + cpu.toString();
 			}else {
 				mensaje = "Error : Ejecucion incorrecta del comando" ;
 			}

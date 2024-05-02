@@ -23,10 +23,10 @@ public class OperandStack {
 
         if (!isEmpty()) {
             for (int i = 0; i < this.numElement; i++) {
-                cadena += this.stack[i] + " ";
+                cadena += " " + this.stack[i];
             }
         } else {
-            System.out.println("La pila esta vacia :p");
+        	cadena = " <vacio>";
         }
 
         return cadena;
@@ -65,9 +65,9 @@ public class OperandStack {
 
     public int pop() {
         if (!isEmpty()) {
+            this.numElement--;
             return this.stack[this.numElement];
         } else {
-            System.out.println("La pila esta vacia :p");
             return -1;
         }
     }

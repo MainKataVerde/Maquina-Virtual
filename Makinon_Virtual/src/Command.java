@@ -28,20 +28,17 @@ public class Command {
 	public boolean execute(Engine engine) {
 		switch (this.command) {
 		case HELP:
-			engine.CommandHelp();
-			return true;
+			return engine.CommandHelp();
 		case NEWINST:
-			engine.CommandNewInst(this);
-			return true;
+			return engine.CommandNewInst(this);
 		case RUN:
-			// engine.CommandRun()
+			return engine.CommandRun();
 		case REPLACE:
 			// engine.CommandReplace()
 		case RESET:
-			// engine.CommandReset()
+			return engine.CommandReset();
 		case QUIT :
-			engine.ComandQuit();
-			return true;
+			return engine.CommandQuit();
 		default:
 			return false;
 		}
