@@ -39,6 +39,7 @@ public class Engine {
 			if (cmd != null) {
 				System.out.println("Comieza la ejecucion de " + cmd.getCommand() + "\n\n");
 				if (cmd.execute(this)) {
+					System.out.println(this.program.toSting());
 				} else {
 					System.out.println("Error : el comando no se pudo ejecutar");
 				}
@@ -46,6 +47,7 @@ public class Engine {
 				System.out.println("Error : Comando incorrecto");
 			}
 		}
+		System.out.println("Fin de la ejecucion....");
 	}
 
 	/*
@@ -64,25 +66,17 @@ public class Engine {
 	}
 
 	public boolean CommandNewInst(Command cmd) {
-		if(cmd.getInstruction() == null) {
-			return false ;
-		}else {
-			this.program.setInstruction(cmd.getInstruction());
-			System.out.println(this.program.toSting());
-			return true;
-		}
+		this.program.setInstruction(cmd.getInstruction());
+		return true;
 	}
 
 	public boolean CommandQuit() {
-		System.out.println(this.program.toSting());
-		System.out.println("Fin de la ejecucion....");
 		this.end = true;
 		return true;
 	}
 
 	public boolean CommandRun() {
 		System.out.println(this.program.runProgram(cpu));
-		System.out.println(this.program.toSting());
 		return true;
 	}
 	
@@ -92,15 +86,12 @@ public class Engine {
 	}
 	
 	public boolean CommandReplace(Command cmd) {
-		if(cmd.getReplace() < this.program.programSize()) {
+		if(cmd.getReplace() > this.program.programSize()) {
 			System.out.print("Nueva instruccion : ");
 			String entrada = sc.nextLine();
-			ByteCode bc = ByteCodeParsear.parser(entrada); 
-			this.program.setInstructionPosition(bc, cmd.getReplace());
-			System.out.println(this.program.toSting());
-			return true;
+			ByteCode bc = ByteCodeParsear.parser(entrada);
+			return this.program.setInstructionPosition(bc, cmd.getReplace());
 		}else {
-			System.out.println(this.program.toSting());
 			return false;
 		}
 	}

@@ -78,14 +78,6 @@ public class ByteCodeProgram {
     	cpu.runCPU();
     	return mensaje;
     }
-	
-	public int getNumElements() {
-		return numElements;
-	}
-	
-	public int programSize() {
-		return this.programs.length;
-	}
 
 	/*
 	 * necesito run program (lo paso el jony , lo tengo explicado escrito y en la hojas)

@@ -65,6 +65,7 @@ public class Engine {
 
 	public boolean CommandNewInst(Command cmd) {
 		if(cmd.getInstruction() == null) {
+			System.out.println(this.program.toSting());
 			return false ;
 		}else {
 			this.program.setInstruction(cmd.getInstruction());

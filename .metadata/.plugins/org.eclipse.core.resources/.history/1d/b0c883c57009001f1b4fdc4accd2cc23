@@ -31,7 +31,12 @@ public class CommandParsear {
 				case "replace":
 						return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(comando[1]));
 				case "newinst" :
-						return new Command(ENUM_COMMAND.NEWINST, ByteCodeParsear.parser(comando[1]));
+						Command cmd = new Command(ENUM_COMMAND.NEWINST, ByteCodeParsear.parser(comando[1]));
+						if(cmd.getInstruction() == null) {
+							return null;
+						}else {
+							return cmd;
+						}
 				default:
 					return null;
 				}

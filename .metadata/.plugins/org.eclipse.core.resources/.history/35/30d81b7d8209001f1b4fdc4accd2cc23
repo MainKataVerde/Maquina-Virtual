@@ -64,11 +64,12 @@ public class Engine {
 	}
 
 	public boolean CommandNewInst(Command cmd) {
+		this.program.setInstruction(cmd.getInstruction());
 		if(cmd.getInstruction() == null) {
 			return false ;
 		}else {
-			this.program.setInstruction(cmd.getInstruction());
 			System.out.println(this.program.toSting());
+			this.program.setInstruction(cmd.getInstruction());
 			return true;
 		}
 	}
@@ -100,7 +101,6 @@ public class Engine {
 			System.out.println(this.program.toSting());
 			return true;
 		}else {
-			System.out.println(this.program.toSting());
 			return false;
 		}
 	}

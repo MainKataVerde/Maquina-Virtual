@@ -100,7 +100,6 @@ public class Engine {
 			System.out.println(this.program.toSting());
 			return true;
 		}else {
-			System.out.println(this.program.toSting());
 			return false;
 		}
 	}

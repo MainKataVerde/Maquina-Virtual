@@ -17,6 +17,8 @@ public class ByteCodeProgram {
 	}
 
 	public boolean setInstructionPosition(ByteCode BC, int pos) {
+		boolean resice = false;
+
 		if (pos >= 0 && pos <= this.programs.length) {
 			this.programs[pos] = BC;
 			return true;
@@ -78,14 +80,6 @@ public class ByteCodeProgram {
     	cpu.runCPU();
     	return mensaje;
     }
-	
-	public int getNumElements() {
-		return numElements;
-	}
-	
-	public int programSize() {
-		return this.programs.length;
-	}
 
 	/*
 	 * necesito run program (lo paso el jony , lo tengo explicado escrito y en la hojas)
