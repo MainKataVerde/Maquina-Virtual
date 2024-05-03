@@ -47,7 +47,6 @@ public class Engine {
 				System.err.println("Error : Comando incorrecto");
 			}
 		}
-		System.out.println("Fin de la ejecucion....");
 	}
 
 	/*
@@ -72,6 +71,7 @@ public class Engine {
 
 	public boolean CommandQuit() {
 		this.end = true;
+		System.out.println("Fin de la ejecucion....");
 		return true;
 	}
 
