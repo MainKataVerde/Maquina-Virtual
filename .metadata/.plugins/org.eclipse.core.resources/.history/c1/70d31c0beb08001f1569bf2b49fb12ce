@@ -26,8 +26,9 @@ public class ByteCodeProgram {
 				resice = true;
 			}
 			this.programs[pos] = BC;
+		} else {
+
 		}
-		
 		return resice;
 	}
 

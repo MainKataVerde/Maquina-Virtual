@@ -16,7 +16,6 @@ public class Command {
 	}
 
 	public Command(ENUM_COMMAND command, int replace) {
-		this.command = command;
 		this.replace = replace;
 	}
 
@@ -55,9 +54,5 @@ public class Command {
 
 	public ByteCode getInstruction() {
 		return instruction;
-	}
-	
-	public int getReplace() {
-		return replace;
 	}
 }

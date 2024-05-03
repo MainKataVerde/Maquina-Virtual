@@ -16,7 +16,6 @@ public class Command {
 	}
 
 	public Command(ENUM_COMMAND command, int replace) {
-		this.command = command;
 		this.replace = replace;
 	}
 
@@ -35,7 +34,7 @@ public class Command {
 		case RUN:
 			return engine.CommandRun();
 		case REPLACE:
-			return engine.CommandReplace(this);
+			return engine.CommandReplace()
 		case RESET:
 			return engine.CommandReset();
 		case QUIT :
@@ -55,9 +54,5 @@ public class Command {
 
 	public ByteCode getInstruction() {
 		return instruction;
-	}
-	
-	public int getReplace() {
-		return replace;
 	}
 }

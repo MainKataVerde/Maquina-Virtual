@@ -89,7 +89,7 @@ public class Engine {
 		System.out.print("Nueva instruccion : ");
 		String entrada = sc.nextLine();
 		ByteCode bc = ByteCodeParsear.parser(entrada);
-		this.program.setInstructionPosition(bc, cmd.getReplace());
+		this.program.setInstructionPosition(bc, bc.getParam2());
 		return true;
 	}
 }

@@ -56,8 +56,4 @@ public class Command {
 	public ByteCode getInstruction() {
 		return instruction;
 	}
-	
-	public int getReplace() {
-		return replace;
-	}
 }

@@ -39,7 +39,7 @@ public class Engine {
 			if (cmd != null) {
 				System.out.println("Comieza la ejecucion de " + cmd.getCommand() + "\n\n");
 				if (cmd.execute(this)) {
-					System.out.println(this.program.toSting());
+
 				} else {
 					System.err.println("Error : el comando no se pudo ejecutar");
 				}
@@ -65,12 +65,15 @@ public class Engine {
 	}
 
 	public boolean CommandNewInst(Command cmd) {
-		this.program.setInstruction(cmd.getInstruction());
+		program.setInstruction(cmd.getInstruction());
+		System.out.println(program.toSting());
+
 		return true;
 	}
 
 	public boolean CommandQuit() {
 		this.end = true;
+		System.out.println(program.toSting());
 		System.out.println("Fin de la ejecucion....");
 		return true;
 	}
@@ -82,14 +85,6 @@ public class Engine {
 	
 	public boolean CommandReset() {
 		this.program.reset();
-		return true;
-	}
-	
-	public boolean CommandReplace(Command cmd) {
-		System.out.print("Nueva instruccion : ");
-		String entrada = sc.nextLine();
-		ByteCode bc = ByteCodeParsear.parser(entrada);
-		this.program.setInstructionPosition(bc, cmd.getReplace());
 		return true;
 	}
 }

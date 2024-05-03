@@ -17,18 +17,16 @@ public class ByteCodeProgram {
 	}
 
 	public boolean setInstructionPosition(ByteCode BC, int pos) {
-		boolean resice = false;
-
 		if (pos >= 0) {
 			if (pos >= this.size) {
 				this.resize();
 				this.programs[pos] = BC;
-				resice = true;
+				return true;
 			}
 			this.programs[pos] = BC;
+		} else {
+			return false
 		}
-		
-		return resice;
 	}
 
 	public String toSting() {
