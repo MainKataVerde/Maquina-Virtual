@@ -17,4 +17,9 @@ bin-release/
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 
-./metadata
+./metadata/
+/.vscode/
+/Makinon_Virtual/.settings/
+/Makinon_Virtual/bin/
+/Makinon_Virtual/doc/
+/Makinon_Virtual/.project

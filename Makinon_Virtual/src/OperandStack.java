@@ -1,83 +1,94 @@
-/*
- * Implementa la pila de operaciones donde se van apilando elementos de tipo entero
- * es la pila que muestra en medio de la ejecucion donde se van a guardar los resultados
+/**
+ * Implementa la pila de operaciones donde se van apilando elementos de tipo
+ * entero es la pila que muestra en medio de la ejecucion donde se van a guardar
+ * los resultados
  */
 public class OperandStack {
-    private int[] stack;
-    private final int MAX_STACK = 10;
-    private int numElement;
+	private int[] stack;
+	private final int MAX_STACK = 10;
+	private int numElement;
 
-    public OperandStack() {
-        this.stack = new int[MAX_STACK];
-        this.numElement = 0;
-    }
+	/**
+	 * Constructora
+	 */
+	public OperandStack() {
+		this.stack = new int[MAX_STACK];
+		this.numElement = 0;
+	}
 
-    /*
-     * Retorna un string no lo imprime
-     * Utiliza el array stuck y lo pasa a string
-     * Sintaxis : Pila : valor valor
-     */
+	/**
+	 * Metodo que devuelve una cadena con el estado de la pila
+	 */
+	public String toString() {
+		String cadena = "";
 
-    public String toString() {
-        String cadena = "";
+		if (!isEmpty()) {
+			for (int i = 0; i < this.numElement; i++) {
+				cadena += " " + this.stack[i];
+			}
+		} else {
+			cadena = " <vacio>";
+		}
 
-        if (!isEmpty()) {
-            for (int i = 0; i < this.numElement; i++) {
-                cadena += " " + this.stack[i];
-            }
-        } else {
-        	cadena = " <vacio>";
-        }
+		return cadena;
+	}
 
-        return cadena;
-    }
+	/**
+	 * Metodo que nos dice si la pila esta vacia
+	 * 
+	 * @return True = vavia , False = no vacia
+	 */
 
-    /*
-     * Nos dice si la array esta vacia o no
-     */
+	public boolean isEmpty() {
+		return this.numElement == 0;
+	}
 
-    public boolean isEmpty() {
-        return this.numElement == 0;
-    }
+	/**
+	 * Metodo para añadir un numero a la pila
+	 * 
+	 * @param valor Valor para añadir a la pila
+	 * @return True = se puedo introducir , False = no se pudo introducir
+	 */
+	public boolean push(int valor) {
+		boolean estado = true;
+		if (this.numElement == this.MAX_STACK) {
+			estado = false;
+		} else {
+			this.stack[this.numElement] = valor;
+			this.numElement++;
+			estado = true;
+		}
+		return estado;
+	}
 
-    /*
-     * Añadimos elemento a la array
-     */
+	/**
+	 * Metodo que nos da el ultimo elemento de la array Se resta el numero de
+	 * elementos cada vez que se saca un numero
+	 * 
+	 * @return Si no esta vacio devuelve el ultimo , si esta vacio devuelve -1
+	 */
 
-    public boolean push(int valor) {
-        boolean estado = true;
-        if (this.numElement == this.MAX_STACK) {
-            estado = false;
-        } else {
-            this.stack[numElement] = valor;
-            numElement++;
-            estado = true;
-        }
-        return estado;
-    }
+	public int pop() {
+		if (!this.isEmpty()) {
+			this.numElement--;
+			return this.stack[this.numElement];
+		} else {
+			return -1;
+		}
+	}
 
-    /*
-     * Nos da el ultimo elemento de la array
-     * tenemos que preguntar si esta vacia primero
-     * saca el elemento de la array
-     * si el pop falla se devuelve -1
-     */
-
-    public int pop() {
-        if (!isEmpty()) {
-            this.numElement--;
-            return this.stack[this.numElement];
-        } else {
-            return -1;
-        }
-    }
-
-    /*
-     * te da el primer el elemento
-     * siempre comprobando la cima si no se puede devolver devolvemos -1
-     */
-    public int getCima() {
-        return 1;
-    }
-
+	/**
+	 * Metodo como el pop pero no lo quita de la pila
+	 * 
+	 * @return Cadena con el ultimo elemento de la pila
+	 */
+	public String getCima() {
+		String cadena = "";
+		if (!this.isEmpty()) {
+			cadena = "Ultimo numero de la pila : " + this.stack[this.numElement - 1];
+		} else {
+			cadena = "<vacio>";
+		}
+		return cadena;
+	}
 }

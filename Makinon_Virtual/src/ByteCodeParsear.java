@@ -1,13 +1,16 @@
-/*
- * Identificar que esta poniendo el ususario por consola
+/**
+ * Esta clase solo se encarga de crear los ByteCode a partir de la cadena que
+ * nos de el usuario
  */
 public class ByteCodeParsear {
-	/*
-	 * Devuelve un bytecode
+	/**
+	 * Metodo que nos haace saber que ByteCode no esta llegando por parametro
+	 * 
+	 * @param cadenaUsuario
+	 * @return El Bytecode en cuestion si no devuelve null
 	 */
 	public static ByteCode parser(String cadenaUsuario) {
 		String[] cadema = cadenaUsuario.split(" ");
-		// si la segunda cadena esta vacia eso quire decir que es de 1 solo
 		if (cadema.length == 2) {
 			if (cadema[1] != null) {
 				switch (cadema[0]) {
@@ -20,7 +23,7 @@ public class ByteCodeParsear {
 				default:
 					return null;
 				}
-			}else{
+			} else {
 				return null;
 			}
 		} else if (cadema.length == 1) {
@@ -44,13 +47,5 @@ public class ByteCodeParsear {
 			return null;
 		}
 
-		/*
-		 * Paricionar el streang q no llega por consolar si el tamaño es 0 se devuelve
-		 * null es q no ha puesto nada basicamente si tiene tamaño 1 tenemos que
-		 * comprobar que palabra es y si coincide con una bytecode si no coincide con
-		 * nada devuelve null si coincide pues creamos un objeto tipo bite code de tipo
-		 * add si el tamaño es 2 es igual q el uno si no es nada es null si es mayor que
-		 * todo esto es null
-		 */
 	}
 }

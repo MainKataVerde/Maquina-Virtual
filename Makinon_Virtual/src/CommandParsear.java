@@ -1,18 +1,19 @@
+/**
+ * Clase que traduce los escrito por el ususario y lo combierte si existe en un
+ * Comando nuevo
+ */
 public class CommandParsear {
-	/*
-	 * Coge un strean lo particiona y lo analiza viendo cada parte del String Si
-	 * esta mal o no correspongo con nungun comando se devuelve null
+	/**
+	 * Metodo que traduce el string que nos da el ususario a un comando
+	 * 
+	 * @param line Strinf del ususario
+	 * @return Comando dado por el usuario y si no null
 	 */
-
-	// tengo que hacer dos filtros uno del tamaño de comando y otro de que es cada
-	// uno
 	public static Command parse(String line) {
 		String[] comando = line.toLowerCase().split(" ");
 
 		switch (comando.length) {
-		// filtrado de tamaño
 		case 1:
-			// filtrado de contenido(saber cual es cual)
 			switch (comando[0]) {
 			case "help":
 				return new Command(ENUM_COMMAND.HELP);
@@ -26,25 +27,25 @@ public class CommandParsear {
 				return null;
 			}
 		case 2:
-			if(comando[1] != null) {
+			if (comando[1] != null) {
 				switch (comando[0]) {
 				case "replace":
-						return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(comando[1]));
-				case "newinst" :
-						return new Command(ENUM_COMMAND.NEWINST, ByteCodeParsear.parser(comando[1]));
+					return new Command(ENUM_COMMAND.REPLACE, Integer.parseInt(comando[1]));
+				case "newinst":
+					return new Command(ENUM_COMMAND.NEWINST, ByteCodeParsear.parser(comando[1]));
 				default:
 					return null;
 				}
-			}else {
+			} else {
 				return null;
 			}
-			
+
 		case 3:
 			switch (comando[0]) {
 			case "newinst":
 				if (comando[1] != null) {
 					return new Command(ENUM_COMMAND.NEWINST, ByteCodeParsear.parser(comando[1] + " " + comando[2]));
-				}else {
+				} else {
 					return null;
 				}
 			default:
