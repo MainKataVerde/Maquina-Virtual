@@ -52,11 +52,11 @@ public class Command {
 		case HELP:
 			return engine.CommandHelp();
 		case NEWINST:
-			return engine.CommandNewInst(this.instruction);
+			return engine.CommandNewInst(this);
 		case RUN:
 			return engine.CommandRun();
 		case REPLACE:
-			return engine.CommandReplace(this.replace);
+			return engine.CommandReplace(this);
 		case RESET:
 			return engine.CommandReset();
 		case QUIT:

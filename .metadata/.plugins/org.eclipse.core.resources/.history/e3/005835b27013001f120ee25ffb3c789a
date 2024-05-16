@@ -108,7 +108,7 @@ public class Engine {
 	 */
 
 	public boolean CommandReplace(int replace) {
-		if (replace < this.program.programSize() && replace >= 0) {
+		if (replace < this.program.programSize()) {
 			System.out.print("Nueva instruccion : ");
 			String entrada = sc.nextLine();
 			ByteCode bc = ByteCodeParsear.parser(entrada);

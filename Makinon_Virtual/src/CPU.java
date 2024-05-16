@@ -158,6 +158,7 @@ public class CPU {
 		if (num1 == -1) {
 			return false;
 		} else if (num1 == 0) {
+			this.pila.push(num2);
 			return false;
 		} else {
 			this.pila.push(num1 / num2);

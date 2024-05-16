@@ -107,12 +107,12 @@ public class Engine {
 	 * @return
 	 */
 
-	public boolean CommandReplace(int replace) {
-		if (replace < this.program.programSize() && replace >= 0) {
+	public boolean CommandReplace(Command cmd) {
+		if (cmd.getReplace() < this.program.programSize()) {
 			System.out.print("Nueva instruccion : ");
 			String entrada = sc.nextLine();
 			ByteCode bc = ByteCodeParsear.parser(entrada);
-			this.program.setInstructionPosition(bc, replace);
+			this.program.setInstructionPosition(bc, cmd.getReplace());
 			System.out.println(this.program.toSting());
 			return true;
 		} else {

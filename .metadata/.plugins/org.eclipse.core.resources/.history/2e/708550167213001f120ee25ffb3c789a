@@ -21,7 +21,7 @@ public class Memory {
     * @return Si se hizo un resize true si no false
     */
     public boolean write(int pos, int value) {
-        if (pos >= this.memory.length) {
+        if (pos >= this.size) {
             resize(pos);
             this.memory[pos] = value;
             this.numElements++;

@@ -52,7 +52,7 @@ public class Command {
 		case HELP:
 			return engine.CommandHelp();
 		case NEWINST:
-			return engine.CommandNewInst(this.instruction);
+			return engine.CommandNewInst(this);
 		case RUN:
 			return engine.CommandRun();
 		case REPLACE:

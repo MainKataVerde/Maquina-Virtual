@@ -60,11 +60,11 @@ public class Engine {
 	 * @return si se ha podido ejecutar o no
 	 */
 
-	public boolean CommandNewInst(ByteCode BC) {
-		if (BC == null) {
+	public boolean CommandNewInst(Command cmd) {
+		if (cmd.getInstruction() == null) {
 			return false;
 		} else {
-			this.program.setInstruction(BC);
+			this.program.setInstruction(cmd.getInstruction());
 			System.out.println(this.program.toSting());
 			return true;
 		}
@@ -107,12 +107,12 @@ public class Engine {
 	 * @return
 	 */
 
-	public boolean CommandReplace(int replace) {
-		if (replace < this.program.programSize() && replace >= 0) {
+	public boolean CommandReplace(int n) {
+		if (n < this.program.programSize()) {
 			System.out.print("Nueva instruccion : ");
 			String entrada = sc.nextLine();
 			ByteCode bc = ByteCodeParsear.parser(entrada);
-			this.program.setInstructionPosition(bc, replace);
+			this.program.setInstructionPosition(bc,n);
 			System.out.println(this.program.toSting());
 			return true;
 		} else {
